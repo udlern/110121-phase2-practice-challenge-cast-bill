@@ -1,12 +1,16 @@
 import React from 'react';
 
 const BillCard = ({ bill }) => {
+
+  function handleAddToCast () {
+    console.log("hi")
+  }
   return (
     <div className="ui column">
       <div
         className="ui card"
         key={bill.id}
-        onClick={() => console.log('add code to connect event listener')}
+        onClick={handleAddToCast}
       >
         <div className="image">
           <img alt={bill.name} src={bill.photo} />

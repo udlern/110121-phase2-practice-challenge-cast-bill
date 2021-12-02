@@ -1,14 +1,25 @@
-import React from 'react';
-import BillCollection from './components/BillCollection';
-import BillsCast from './components/BillsCast';
+import React, { useState, useEffect } from "react";
+import BillCollection from "./components/BillCollection";
+import BillsCast from "./components/BillsCast";
+
+const API = "http://localhost:8002/bills";
 
 export default function App() {
-  //start here with your code for step one
+  const [bills, setBills] = useState([]);
+  useEffect(() => {
+    fetch(API)
+      .then((resp) => resp.json())
+      .then((data) => setBills(data));
+  }, []);
+
+  function handleAddToCast () {
+  
+  }
 
   return (
     <div>
-      <BillsCast />
-      <BillCollection />
+      <BillsCast handleAddToCast={handleAddToCast} bills={bills} setBills={setBills}/>
+      <BillCollection bills={bills}/>
     </div>
   );
 }
